@@ -1,0 +1,126 @@
+    :root{
+        --bubble-bg: #fff7f0;
+        --bubble-border: #ffd6c4;
+        --text-color: #333;
+        --accent: #ff8a65;
+        --shadow: 0 8px 20px rgba(18,18,18,0.08);
+        --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    body{
+        font-family: var(--font);
+        background-image: url('./ressourse/2151118944.jpg');
+        background-size: cover;
+        /* background: linear-gradient(180deg,#f6f7fb 0%, #eef2f8 100%); */
+        min-height:100vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        padding:24px;
+    }
+
+    /* Контейнер персонажа + облако */
+    .scene{
+        display:flex;
+        align-items:flex-end;
+        gap:16px;
+        max-width:760px;
+        width:100%;
+    }
+
+    /* Автарка (простая) */
+    .avatar{
+        width:84px;
+        height:84px;
+        border-radius:50%;
+        background: linear-gradient(135deg,#ffd6c4,#ff8a65);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        box-shadow: var(--shadow);
+        flex-shrink:0;
+        font-weight:700;
+        color:white;
+        font-size:28px;
+    }
+
+    /* Облако */
+    .bubble{
+        position:relative;
+        background:var(--bubble-bg);
+        border:2px solid var(--bubble-border);
+        border-radius:18px;
+        padding:16px 18px;
+        box-shadow: var(--shadow);
+        color:var(--text-color);
+        max-width:640px;
+        line-height:1.45;
+    }
+    /* "Хвостик" облака */
+    .bubble::before{
+        content:"";
+        position:absolute;
+        left:18px;
+        bottom:-12px;
+        width:22px;
+        height:22px;
+        background:var(--bubble-bg);
+        border-left:2px solid var(--bubble-border);
+        border-bottom:2px solid var(--bubble-border);
+        transform:rotate(45deg);
+        border-radius:3px;
+    }
+
+    /* текст внутри облака — контейнер для слов */
+    .bubble .text{
+        display:inline-block;
+        font-size:16px;
+        color:var(--text-color);
+        vertical-align:middle;
+    }
+
+    /* каждый слово — span с анимацией появления */
+    .bubble .word{
+        opacity:0;
+        display:inline-block;
+        margin-right:6px;
+        transform:translateY(6px);
+      /* animation will be applied inline via JS with different delays */
+      /* keep transform/opacity for smoother rendering */
+    }
+    
+    @keyframes wordIn {
+        from { opacity:0; transform:translateY(8px) scale(0.98); }
+        to   { opacity:1; transform:translateY(0) scale(1); }
+    }
+
+    /* вспомогательный небольшой контрол */
+    .controls{
+        margin-top:12px;
+        display:flex;
+        gap:8px;
+        align-items:center;
+        font-size:14px;
+    }
+    button{
+        background:var(--accent);
+        color:white;
+        border:0;
+        padding:8px 12px;
+        border-radius:10px;
+        cursor:pointer;
+        box-shadow: 0 6px 12px rgba(255,138,101,0.14);
+        transition:transform .12s ease;
+    }
+    button:active{ transform:translateY(1px); }
+    .muted{
+        background:transparent;
+        color:#666;
+        border:1px solid #e6e6e6;
+        }
+    /* мобильная адаптация */
+    @media (max-width:480px){
+        .avatar{ width:64px; height:64px; font-size:22px; }
+        .bubble{ padding:12px; border-radius:14px; }
+        .bubble .text{ font-size:15px; }
+    }

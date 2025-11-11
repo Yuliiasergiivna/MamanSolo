@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MamanBudget — Speech Bubble Demo</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <main class="scene" aria-live="polite">
+        <div class="avatar" aria-hidden="true">👩‍👧</div>
+
+        <div>
+            <!-- Облако -->
+            <div id="bubble" class="bubble" role="status" aria-live="polite" aria-atomic="false">
+            <div id="bubbleText" class="text"></div>
+            </div>
+
+            <!-- Контролы для демонстрации -->
+            <div class="controls" aria-hidden="false">
+                <button id="playBtn" title="Afficher la phrase">Afficher la phrase</button>
+                <button id="replayBtn" class="muted" title="Rejouer">Rejouer</button>
+                <button id="skipBtn" class="muted" title="Afficher tout immédiatement">Afficher tout</button>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
